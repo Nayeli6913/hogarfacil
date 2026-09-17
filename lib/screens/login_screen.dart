@@ -178,17 +178,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     validator: (value) {
-                      if (value == null ||
-                          value.trim().isEmpty) {
-                        return 'Ingresa tu correo';
-                      }
+  if (value == null || value.trim().isEmpty) {
+    return 'El correo es obligatorio';
+  }
 
-                      if (!value.contains('@')) {
-                        return 'Ingresa un correo válido';
-                      }
+  if (!RegExp(
+    r'^[^@]+@[^@]+\.[^@]+',
+  ).hasMatch(value.trim())) {
+    return 'Ingrese un correo electrónico válido';
+  }
 
-                      return null;
-                    },
+  return null;
+},
                   ),
 
                   const SizedBox(height: 18),
@@ -236,13 +237,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     validator: (value) {
-                      if (value == null ||
-                          value.isEmpty) {
-                        return 'Ingresa tu contraseña';
-                      }
+  if (value == null || value.isEmpty) {
+    return 'La contraseña es obligatoria';
+  }
 
-                      return null;
-                    },
+  return null;
+},
                   ),
 
                   const SizedBox(height: 28),

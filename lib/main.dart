@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
+import 'package:provider/provider.dart';
+import 'providers/auth_provider.dart';
 
 void main() {
-  runApp(const HogarFacilApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => AuthProvider(),
+      child: const HogarFacilApp(),
+    ),
+  );
 }
 
 class HogarFacilApp extends StatelessWidget {
